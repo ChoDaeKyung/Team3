@@ -1,39 +1,41 @@
 package com.example.tobi.team3.controller;
 
-import com.example.tobi.team3.model.Items;
+import com.example.tobi.team3.dto.ItemDetailResponseDTO;
+import com.example.tobi.team3.model.Item;
 import com.example.tobi.team3.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("/main")
+@RequestMapping("/api")
 public class ItemApiController {
 
     private final ItemService itemService;
 
-    @GetMapping("/{item}")
-    public String itemList(@PathVariable String item, HttpSession session, Model model) {
-        setSession(session, model);
+    @GetMapping("/main/category")
+    public ResponseEntity<List<Item>> getItemsByCategory(@RequestParam("category") String category) {
+        List<Item> itemList = itemService.getItemsByCategory(category);
 
-        List<Items> itemList = itemService.getItemList(item);
-        model.addAttribute("items", itemList);
-
-        return "category";
+        return ResponseEntity.ok(itemList);
     }
 
-    private void setSession(HttpSession session, Model model) {
-        String userId = (String) session.getAttribute("userId");
-        String userName = (String) session.getAttribute("userName");
-
-        model.addAttribute("userId",userId);
-        model.addAttribute("userName",userName);
+    @GetMapping("/main/category/{id}")
+    public ItemDetailResponseDTO getItemDetail(@PathVariable("id") Long id) {
+        System.out.println("id :: " + id);
+        Item itemDetail = itemService.getItemDetail(id);
+        return ItemDetailResponseDTO.builder()
+                .id(itemDetail.getId())
+                .item(itemDetail.getItem())
+                .price(itemDetail.getPrice())
+                .detail(itemDetail.getDetail())
+                .seller(itemDetail.getSeller())
+                .category(itemDetail.getCategory())
+                .build();
     }
 }

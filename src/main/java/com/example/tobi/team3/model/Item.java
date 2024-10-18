@@ -5,9 +5,11 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class Items {
+public class Item {
+    private String id;
     private String item;
     private String price;
     private String detail;
     private String seller;
+    private String category;
 }

@@ -37,4 +37,10 @@ public class MemberController {
     public String changePw() {
         return "changePw";
     }
+
+    @GetMapping("/mypage")
+    public String myPage() {
+        return "myPage";
+    }
+
 }

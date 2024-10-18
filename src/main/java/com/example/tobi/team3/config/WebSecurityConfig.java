@@ -40,7 +40,11 @@ public class WebSecurityConfig {
                                         new AntPathRequestMatcher("/main/find/findId"),
                                         new AntPathRequestMatcher("/main/find/changePw"),
                                         new AntPathRequestMatcher("/changePw"),
-                                        new AntPathRequestMatcher("/findId")
+                                        new AntPathRequestMatcher("/findId"),
+                                        new AntPathRequestMatcher("/main/category"),
+                                        new AntPathRequestMatcher("/api/main/category"),
+                                        new AntPathRequestMatcher("/main/category/detail"),
+                                        new AntPathRequestMatcher("/api/main/category/{id}")
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
@@ -54,7 +58,7 @@ public class WebSecurityConfig {
                 .logout(
                         logout -> logout
                                 .logoutUrl("/logout")
-                                .logoutSuccessUrl("/main")
+                                .logoutSuccessUrl("/")
                 )
                 .csrf(AbstractHttpConfigurer::disable);
 
