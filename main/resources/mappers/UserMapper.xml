@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tobi.team3.mapper.UserMapper">
+
+    <insert id="signUp" parameterType="com.example.tobi.team3.model.User">
+        INSERT INTO user (userId, password, userName, email, phone, address)
+        VALUES (#{userId}, #{password}, #{userName}, #{email}, #{phone}, #{address});
+    </insert>
+
+
+<select id="signIn" parameterType="String">
+    SELECT userId, password, userName, email, phone, address FROM user WHERE userId = #{userId};
+</select>
+
+    <select id="findId" parameterType="com.example.tobi.team3.model.User">
+        SELECT * FROM user WHERE  userName = #{userName} AND phone = #{phone};
+    </select>
+
+    <update id="changePw" parameterType="com.example.tobi.team3.model.User">
+UPDATE user SET password = #{password} WHERE userId = #{userId} and userName = #{userName} and phone = #{phone};
+    </update>
+
+    <select id="findUser" parameterType="com.example.tobi.team3.model.User">
+        SELECT * FROM user WHERE userId = #{userId} and userName = #{userName} and phone = #{phone};
+    </select>
+
+</mapper>

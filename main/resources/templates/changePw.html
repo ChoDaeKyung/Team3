@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
+  <script th:src="@{/js/changePw.js}"></script>
+  <link th:href="@{/css/changePw.css}" rel="stylesheet">
+  <title>회원가입 페이지</title>
+</head>
+<body>
+<div class="container">
+  <a href="/main" class="logo">Team3</a>
+  <form class="signup-form">
+    <label>이름:</label>
+    <input type="text" placeholder ="이름을 입력하세요." id="userName" name="userName" required>
+
+    <label>아이디:</label>
+    <input type="text" placeholder ="아이디를 입력하세요." id="userId" name="userId" required>
+
+    <label>전화번호:</label>
+    <input type="text" placeholder ="전화번호를 입력하세요." id="phone" name="phone" required>
+
+    <button type="button" id="checkinfo">확인</button>
+
+    <div id="password-section" class="hidden">
+      <label>비밀번호:</label>
+      <input type="password" placeholder ="비밀번호를 입력하세요." id="password" name="password" required>
+      <button type="button" id="changePW" class="button-spacing">비밀번호 변경</button>
+    </div>
+  </form>
+</div>
+<footer>
+  <hr>
+  <p>상호명 및 호스팅 서비스 제공 : 하이미디어</p>
+  <p>개발자 : 조대경,유지연,박경훈  </p>
+  <p>사업자 등록번호 : 000-00-00000</p>
+  <p>고객센터 : 010-3097-5843</p>
+  <p>담당자 : 조대경(메인), 유지연(로그인), 박경훈(회원가입)</p>
+</footer>
+</body>
+</html>

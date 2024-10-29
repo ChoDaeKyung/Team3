@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.tobi.team3.mapper.ItemMapper">
+
+<select id="getItemListByCategory"
+        resultType="com.example.tobi.team3.model.Item"
+        parameterType="com.example.tobi.team3.model.Paging">
+    select id,item,price,detail,seller,category,imagePath,likes,version from item WHERE category = #{category} order by id DESC LIMIT #{offset}, #{size};
+</select>
+
+    <select id="getItemDetail" parameterType="Long">
+        select * from item  WHERE id = #{id};
+    </select>
+
+    <insert id="saveItem" parameterType="com.example.tobi.team3.model.Item">
+        INSERT INTO item (item, price, detail,seller, category, imagePath,likes)
+        values (#{item}, #{price}, #{detail}, #{seller}, #{category}, #{imagePath}, 0);
+    </insert>
+
+    <select id="getItemListByUserId" parameterType="com.example.tobi.team3.model.Item">
+        select * from item WHERE seller = #{seller}
+    </select>
+
+    <delete id="deleteItemListById" parameterType="com.example.tobi.team3.model.Item">
+        DELETE FROM item WHERE id = #{id}
+    </delete>
+
+    <update id="itemLikes" parameterType="com.example.tobi.team3.model.Item">
+        UPDATE item SET likes = likes + 1, version = version + 1
+        WHERE id = #{id} AND version = #{version}
+    </update>
+
+    <insert id="likesCount" parameterType="com.example.tobi.team3.model.Likes">
+        INSERT INTO likes (userId, itemId) values (#{userId}, #{itemId})
+    </insert>
+
+    <select id="countCategoryItems" resultType="Integer">
+        SELECT COUNT(*) FROM item WHERE category = #{category};
+    </select>
+
+    <select id="searchItem" parameterType="String" resultType="com.example.tobi.team3.model.Item">
+        select * from item where item LIKE CONCAT('%', #{search}, '%')
+    </select>
+</mapper>

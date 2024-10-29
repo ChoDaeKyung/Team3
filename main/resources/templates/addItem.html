@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/addItem.js}"></script>
+    <link th:href="@{/css/addItem.css}" rel="stylesheet">
+    <title>상품 등록 페이지</title>
+</head>
+<body>
+<div class="container">
+    <a href="/main" class="logo">Team3</a>
+    <form class="addItem-form" enctype="multipart/form-data" th:action="@{/addItem}" method="post">
+        <label>카테고리:</label>
+        <select name="selectBar" id="selectBar">
+            <option selected value="카테고리">-카테고리-</option>
+            <option value="전자제품">전자제품</option>
+            <option value="카테고리2">카테고리2</option>
+            <option value="카테고리3">카테고리3</option>
+            <option value="카테고리4">카테고리4</option>
+        </select>
+
+        <label>상품명:</label>
+        <input type="text" placeholder="상품명을 입력하세요." id="item" name="item" required>
+
+        <label>가격:</label>
+        <input type="text" placeholder="상품의 가격을 입력하세요.(₩)" id="price" name="price" required>
+
+        <label>제품설명:</label>
+        <input type="text" placeholder="제품 설명란입니다. 상세정보를 입력해주세요." id="detail" name="detail" required>
+
+        <label>판매자명:</label>
+        <input type="text" placeholder="파시는 분 성함이요." id="seller" name="seller" required>
+
+        <label>제품사진:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <div class="products">
+            <div th:each="item : ${items}">
+                <a th:href="@{/product/{id}(id=${item.id})}">
+                    <img th:src="@{/images/{imagePath}(imagePath=${item.image})}" alt="상품 이미지">
+                </a>
+                <p th:text="${item.item}"></p>
+            </div>
+        </div>
+
+        <button type="button" id="addItem">글 등록</button>
+    </form>
+</div>
+</body>
+</html>

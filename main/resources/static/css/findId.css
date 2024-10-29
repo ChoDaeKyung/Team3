@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Snap ITC', cursive;
+    font-size: 48px;
+    text-decoration: none; /* 기본적으로 언더라인 제거 */
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.logo:hover {
+    text-decoration: none; /* 마우스를 올렸을 때도 언더라인 제거 */
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+}
+
+input, textarea {
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
+  <script th:src="@{/js/find.js}"></script>
+  <link th:href="@{/css/find.css}" rel="stylesheet">
+  <title>아이디/비밀번호 찾기</title>
+</head>
+<body>
+<div class="box">
+  <div class="container">
+    <a th:href="@{/main/find/findId}" class="btn" id="find-id">아이디 찾기</a>
+    <a th:href="@{/main/find/changePw}" class="btn" id="find-password">비밀번호 찾기</a>
+  </div>
+</div>
+<footer>
+  <hr>
+  <p>상호명 및 호스팅 서비스 제공 : 하이미디어</p>
+  <p>개발자 : 조대경,유지연,박경훈  </p>
+  <p>사업자 등록번호 : 000-00-00000</p>
+  <p>고객센터 : 010-3097-5843</p>
+  <p>담당자 : 조대경(메인), 유지연(로그인), 박경훈(회원가입)</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header .logo {
+    font-size: 55px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Snap ITC', cursive;
+    color:black;
+    margin-left: 30px;
+}
+
+.search-container {
+    position: relative;
+    width: 600px;
+    margin: 0 10px;
+}
+
+.search-container input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.search-container button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 5px;
+}
+
+.header .links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Changed to 3 items per row */
+    gap: 20px;
+    justify-items: center;
+}
+
+.products img {
+    width: 200px;
+    height: 200px;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 12px;
+}
+
+.moneyDiv {
+    text-align:center;
+    margin-top: -20px;
+}
+
+.page {
+    text-align: center;
+    margin-top: 20px;
+}

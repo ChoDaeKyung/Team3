@@ -1,0 +1,85 @@
+
+  <!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/myPage.js}"></script>
+    <link th:href="@{/css/myPage.css}" rel="stylesheet">
+    <title>마이페이지</title>
+  </head>
+  <body>
+  <div class="container">
+    <div class="logo-container">
+      <a href="/main" class="logo">Team3</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#profile">회원 정보 수정</a></li>
+        <li><a href="#withdraw">회원 탈퇴</a></li>
+        <li><a href="#cart">장바구니</a></li>
+        <li><a href="#orders">주문 내역</a></li>
+        <li><a href="#goods">내 상품</a></li>
+      </ul>
+    </nav>
+
+    <section id="profile">
+      <h2>회원 정보 수정</h2>
+      <div id="checkPassword"> <!--class="checkPassword"-->
+        <label for="editByPW">회원 정보 수정을 원하시면 비밀번호를 입력하세요:</label>
+        <input type="password" id="editByPW" name="editByPW" required>
+        <button id="editBtnByPW" type="submit">확인</button>
+      </div>
+      <form id="editProfile" class="editProfile">
+        <label for="editPassword">비밀번호:</label>
+        <input type="text" id="editPassword" name="editPassword" required>
+
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">전화번호:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <button type="submit">정보 수정</button>
+      </form>
+    </section>
+
+    <section id="withdraw">
+      <h2>회원 탈퇴</h2>
+      <p>회원 탈퇴를 원하시면 비밀번호를 입력하세요.</p>
+      <input type="password" id="deleteByPW" name="deleteByPW" required>
+      <button id="deleteBtnByPW" type="button">확인</button>
+    </section>
+
+
+    <section id="cart">
+      <h2>장바구니</h2>
+      <p>장바구니에 담긴 상품 목록이 표시됩니다.</p>
+      <!-- 장바구니 내용 추가 가능 -->
+    </section>
+
+    <section id="orders">
+      <h2>주문 내역</h2>
+      <p>주문 내역이 표시됩니다.</p>
+      <!-- 주문 내역 추가 가능 -->
+    </section>
+
+    <section id="goods">
+      <h2>내 상품</h2>
+      <p>내 상품 글 관리를 원하시면 버튼을 눌러주세요.</p>
+      <button id="createArticle" type="button" onclick="location.href='/main/mypage/addItem'">글 추가</button>
+
+      <button id="updateArticle" type="button" onclick="location.href='/main/mypage/UpdateItem'">글 수정</button>
+
+      <button id="deleteArticle" type="submit" onclick="location.href='/main/mypage/deleteItem'">글 삭제</button>
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script th:src="@{/js/myPage.js}"></script>
+  </body>
+  </html>

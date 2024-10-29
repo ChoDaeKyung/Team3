@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color:black;
+    background-color: #f5f5f5;
+}
+
+.logo a:visited{
+    color:black;
+}
+
+.login-container {
+    width: 400px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-family: 'Snap ITC', cursive;
+    color:black;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 40px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group label {
+    position: absolute;
+    left: 10px;
+    color: #888;
+}
+
+.input-group .clear-btn {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.input-group input:focus + .clear-btn {
+    display: block;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.help-links {
+    margin-bottom: 15px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.help-links a {
+    color: #888;
+    text-decoration: none;
+}
+
+.login-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.signup-btn {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.signup-btn:hover {
+    background-color: #f0f0f0;
+}
