@@ -1,7 +1,7 @@
 package com.example.tobi.team3.service;
 
 import com.example.tobi.team3.mapper.ItemMapper;
-import com.example.tobi.team3.model.Item;
+import com.example.tobi.team3.model.Items;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,7 @@ public class ItemService {
 
     private final ItemMapper itemMapper;
 
-    public List<Item> getItemsByCategory(String category) {
-        return itemMapper.getItemListByCategory(category);
-    }
-
-    public Item getItemDetail(Long id) {
-        return itemMapper.getItemDetail(id);
+    public List<Items> getItemList(String tablename){
+        return itemMapper.getItemListByTable(tablename);
     }
 }

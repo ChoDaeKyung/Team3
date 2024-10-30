@@ -1,50 +1,37 @@
-$(document).ready(function() {
-    // 현재 URL에서 카테고리 값을 가져오는 함수
-    let hUserId = $('hiddenUserId').val();
+$(document).ready(function () {
+    $('.category-link').on('click', function (event) {
+        event.preventDefault(); // 기본 링크 동작 막기
 
-        function getParameterByName(name) {
-            const url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
+        var tableName = $(this).data('table'); // 클릭한 카테고리의 테이블명
 
-        // 현재 카테고리 값을 가져옴
-        const category = getParameterByName('category');
-
-        // 카테고리명을 표시
-        $('#category-name').text(category);
-
-        // Ajax를 이용해 서버에서 상품 리스트를 가져오기
+        // AJAX 요청을 통해 서버에서 테이블 데이터를 가져오기
         $.ajax({
-            url: '/api/main/category',  // 실제 데이터를 가져올 API 엔드포인트
-            type: 'GET',
-            dataType: 'json',
-            data: {category: category},
+            url: '/main/'+ category, // 서버의 처리 URL
+            method: 'GET',
+            data: { tablename: tableName }, // 테이블 이름을 서버로 전송
             success: function (response) {
-                // 상품 데이터를 받아서 테이블에 렌더링
-                const items = response;
-                let htmlContent = '';
-                items.forEach(function (item) {
-                    console.log('item.id :: ', item.id);
-                    htmlContent += `
-                    <div>
-                    <a href="/main/category/detail?id=${item.id}">
-                    <img src="https://via.placeholder.com/200x200?text=N" alt="N Logo">
-                <p>${item.item} (${item.price}₩)</p>
-                </a>
-                </div>
-                `;
-                });
+                // 응답 데이터를 받아와서 화면에 표시
+                var productList = $('#productList');
+                productList.empty(); // 기존 내용을 비우기
 
-                // #items에 HTML 콘텐츠 추가
-                $('#items').html(htmlContent);
+                response.forEach(function (item) {
+                    // 각 item을 화면에 추가
+                    var productHTML = `
+                        <div class="product-item">
+                            <img src="${item.url}" alt="${item.item}" class="product-image">
+                            <h3>${item.item}</h3>
+                            <p>가격: ${item.price}원</p>
+                            <p>판매자: ${item.seller}</p>
+                            <p>상세 정보: ${item.detail}</p>
+                            <a href="${item.url}" target="_blank">상품 보기</a>
+                        </div>
+                    `;
+                    productList.append(productHTML); // 데이터를 화면에 추가
+                });
             },
-            error: function () {
-                console.error("상품 데이터를 불러오는 데 실패했습니다.");
+            error: function (error) {
+                console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         });
+    });
 });
