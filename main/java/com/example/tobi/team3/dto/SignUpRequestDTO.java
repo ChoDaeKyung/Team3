@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Getter
-public class    SignUpRequestDTO {
+public class SignUpRequestDTO {
     private String userId;
     private String password;
     private String userName;

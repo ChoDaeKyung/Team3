@@ -59,8 +59,7 @@ body {
 .nav {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .nav a {
@@ -84,14 +83,4 @@ body {
 footer {
     margin-top: 40px;
     font-size: 12px;
-}
-
-.moneyDiv {
-    text-align:center;
-    margin-top: -20px;
-}
-
-.page {
-    text-align: center;
-    margin-top: 20px;
 }
